@@ -20,15 +20,32 @@ public:
 	vec3 operator+(const vec3 &v2) {
 		return*vec3(this->x + v2.x, this->y + v2.y, this->z + v2.z));
 	}
+
 	vec3 operator-(const vec3 &v2) {
 		return*vec3(this->x - v2.x, this->y - v2.y, this->z - v2.z));
 	}
+
+	vec3 operator+=(const vec3 &v2) {
+		this->x += v2.x; 
+		this->y += v2.y;
+		this->z += v2.z;
+		return*this; 
+	}
+
+	vec3 operator-=(const vec3 &v2) {
+		this->x -= v2.x;
+		this->y -= v2.y;
+		this->z -= v2.z;
+		return*this;
+	}
+
 	bool operator=(const vec3 &v2) const {
 		if (this->x == v2.x && this->y == v2.y && this->z == v2.z) {
 			return true;
 		}
 		return false; 
 	}
+
 	vec3 operator==(const vec3 &v2) {
 		this->x = v2.x;
 		this->y = v2.y;
@@ -36,7 +53,7 @@ public:
 		return*this;
 	}
 
-	int distance_to(const vec3 &v2) {
+	type1 distance_squared(const vec3 &v2) {
 		type1 ret; 
 		pow(ret, 2) = pow(this->x - v2.x, 2) + pow(this->y - v2.y, 2) + +pow(this->z - v2.z, 2);
 		return ret; 
@@ -61,7 +78,6 @@ public:
 		this->z /= module;
 		return*this;
 	}
-
 };
 
 #endif
