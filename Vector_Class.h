@@ -7,7 +7,7 @@ template <class type1>
 
 class vec3 {	
 public: 
-	const type1 x, y, z;
+	type1 x, y, z;
 	vec3() {};
 	vec3(const type1 x, const type1 y, const type1 z) :x(x), y(y), z(z) {};
 	vec3(const type1 x, const type1 y, const type1 z) {
