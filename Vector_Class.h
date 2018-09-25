@@ -7,10 +7,10 @@ template <class type1>
 
 class vec3 {	
 public: 
-	type1 x, y, z;
+	const type1 x, y, z;
 	vec3() {};
-	vec3(type1 x, type1 y, type1 z) :x(x), y(y), z(z) {};
-	vec3(type1 x, type1 y, type1 z) {
+	vec3(const type1 x, const type1 y, const type1 z) :x(x), y(y), z(z) {};
+	vec3(const type1 x, const type1 y, const type1 z) {
 		this->x = pow(x, 2); 
 		this->y = pow(y, 2);
 		this->z = pow(z, 2);
