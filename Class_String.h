@@ -4,7 +4,7 @@
 class String {
 public: 
 	const char* name; 
-	String() {}; 
+	String() {}
 	String(const char* name) :name(name) {}
 
 	String Assign(String &string2) {
@@ -17,7 +17,13 @@ public:
 	   return*this; 
 	}
 
+	bool operator==(const char* name) const {
+		if (this->name == name) {
+			return true; 
+		}
+		return false; 
+	}
+
 };
 
 #endif 
-

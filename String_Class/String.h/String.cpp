@@ -11,6 +11,6 @@ void main() {
 	cout << "c) is called: " << c.name << endl; 
 	a = "bye"; 
 	cout << "a) is called: " << a.name << endl;
-	
+	c.operator==("hello"); 
 	system("pause"); 
 }
