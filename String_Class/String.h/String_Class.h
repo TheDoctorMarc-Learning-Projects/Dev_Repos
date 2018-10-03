@@ -1,13 +1,21 @@
-#ifndef STRING_H
-#define STRING_H
+#ifndef STRING_CLASS_H
+#define STRING_CLASS_H
+#include<string>
 
 class String {
-public: 
-	const char* name; 
-	String() {}
-	String(const char* name) :name(name) {}
+private: 
+	const char* name = nullptr; 
+	unsigned int allocated_memory = 0u; 
 
-	String Assign(String &string2) {
+public:
+
+	String() {}
+	String(const char* name) :name(name) {
+		allocated_memory = 
+	}
+    
+
+	/*String Assign(String &string2) {
 		this->name = string2.name; 
 		return*this; 
 	}
@@ -22,7 +30,9 @@ public:
 			return true; 
 		}
 		return false; 
-	}
+	}*/
+
+
 
 };
 
