@@ -1,29 +1,70 @@
 #ifndef STRING_H
 #define STRING_H
-
+#include <string.h>
+#include <assert.h>
 class String {
-public: 
-	const char* name; 
+
+private:
+	char* string = nullptr;
+	unsigned int allocated_memory = 0u;
+	
+
+public:
+
 	String() {}
-	String(const char* name) :name(name) {}
-
-	String Assign(String &string2) {
-		this->name = string2.name; 
-		return*this; 
-	}
-
-	String operator=(const char* name) {
-	   this->name = name; 
-	   return*this; 
-	}
-
-	bool operator==(const char* name) const {
-		if (this->name == name) {
-			return true; 
+	String(const char* string)
+	{
+		assert(string != nullptr);
+		if (string != nullptr) {
+			allocated_memory = strlen(string) + 1;
+			this->string = new char[allocated_memory];
+			strcpy_s(this->string, allocated_memory, string);
 		}
-		return false; 
+	} 
+	String(const String& TheString)
+	{
+		assert(TheString.string != nullptr);
+		if (TheString.string != nullptr) {
+			allocated_memory = TheString.allocated_memory;
+			this->string = new char[allocated_memory];
+			strcpy_s(this->string, allocated_memory, TheString.string);
+		}
 	}
 
+	String operator=(const char* string)
+	{ 
+		if (strlen(string) + 1 <= this->allocated_memory) {
+			allocated_memory = strlen(string) + 1;
+			strcpy_s(this->string, allocated_memory, string);
+		}
+	}
+
+	bool operator==(const char* string)
+	{
+		bool ret = false; 
+		if (this->string == string) {
+			ret = true; 
+		}
+		return ret;
+	}
+
+	char* GetChar()
+	{
+		assert(this->string != nullptr);
+		if (this->string != nullptr) {
+			return this->string;
+		}
+	}
+
+	~String()
+	{
+		if (string != nullptr) {
+			delete[] string;
+			string = nullptr;
+			allocated_memory = 0u;
+		}
+	}
 };
 
-#endif 
+
+#endif

@@ -4,6 +4,7 @@
 class String {
 public: 
 	const char* name; 
+
 	String() {}
 	String(const char* name) :name(name) {}
 
