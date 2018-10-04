@@ -1,9 +1,9 @@
 #include<iostream>
-#include"String_Class.h"
+#include"String.h"
 using namespace std; 
 
 void main() {
-	/*String a; 
+	String a; 
 	cout << "a) does not have a name" << endl; 
 	String b("hello"); 
 	cout << "b) is called: " << b.name << endl; 
@@ -12,5 +12,5 @@ void main() {
 	a = "bye"; 
 	cout << "a) is called: " << a.name << endl;
 	c.operator==("hello"); 
-	system("pause"); */
+	system("pause"); 
 }
