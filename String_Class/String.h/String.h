@@ -2,13 +2,14 @@
 #define STRING_H
 #include <string.h>
 #include <assert.h>
+
 class String {
 
 private:
+
 	char* string = nullptr;
 	unsigned int allocated_memory = 0u;
 	
-
 public:
 
 	String() {}
@@ -21,6 +22,7 @@ public:
 			strcpy_s(this->string, allocated_memory, string);
 		}
 	} 
+
 	String(const String& TheString)
 	{
 		assert(TheString.string != nullptr);
@@ -37,18 +39,20 @@ public:
 			allocated_memory = strlen(string) + 1;
 			strcpy_s(this->string, allocated_memory, string);
 		}
+		return& this; 
 	}
 
-	bool operator==(const char* string)
+	bool operator==(const String& TheString) const
 	{
 		bool ret = false; 
-		if (this->string == string) {
-			ret = true; 
+		assert(TheString.string != nullptr);
+		if (TheString.string != nullptr && this->string == TheString.string) {
+				ret = true;
 		}
 		return ret;
 	}
 
-	char* GetChar()
+	char* GetChar() const
 	{
 		assert(this->string != nullptr);
 		if (this->string != nullptr) {
