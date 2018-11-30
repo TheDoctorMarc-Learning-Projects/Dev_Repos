@@ -5,28 +5,34 @@
 #include "p2Point.h"
 #include "SDL/include/SDL.h"
 
+class Animation;
+
 class j1Gui_Object : public j1Gui
 {
 public:
 
-	j1Gui_Object(iPoint pos) {
+	j1Gui_Object(iPoint pos, SDL_Rect atlas_rect) {
 		this->pos = pos; 
+		this->rect = atlas_rect; 
+	    
 	};
 
 	// Destructor
-	virtual ~j1Gui_Object();
+	virtual ~j1Gui_Object() {};
 
 	// Called when before render is available
-	bool Awake(pugi::xml_node&);
+	virtual bool Awake(pugi::xml_node&) {
+		return true; 
+	};
 
 	
-private:
+public:
 
 	iPoint pos; 
 	SDL_Rect rect; 
 	TYPE type; 
-	
-
+	Animation* anim; 
+	SDL_Texture* tex; 
 };
 
 

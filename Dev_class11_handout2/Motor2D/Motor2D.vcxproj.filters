@@ -129,6 +129,9 @@
     <ClInclude Include="j1Gui_Image.h">
       <Filter>Desenvolupament  ========\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Desenvolupament  ========\help</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -151,6 +154,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\GUI">
       <UniqueIdentifier>{75eadf70-0d43-4cd0-a4bb-1bf7c09cb42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\help">
+      <UniqueIdentifier>{84b6267f-c725-499e-acc9-58e40f737fbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

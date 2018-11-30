@@ -7,4 +7,5 @@
 bool j1Gui_Label::Awake(pugi::xml_node& conf)
 {
 	font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 12); 
+	return true; 
 }

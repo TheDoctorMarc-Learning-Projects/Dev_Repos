@@ -11,6 +11,9 @@
 // TODO 1: Create your structure of classes
 
 class j1Gui_Object; 
+struct SDL_Texture; 
+struct SDL_Rect; 
+struct SDL_Color;
 
 enum TYPE {
 	Label,
@@ -39,7 +42,7 @@ public:
 	// Called before all Updates
 	bool PreUpdate();
 
-	bool Update();
+	bool Update(float);
 
 	// Called after all Updates
 	bool PostUpdate();
@@ -50,18 +53,19 @@ public:
 	// TODO 2: Create the factory methods
 	// Gui creation functions
 
-	void Create_Object(TYPE, iPoint); 
-	void Delete_Object();
+	void Create_Object(TYPE, iPoint, SDL_Rect&, char* text = nullptr, SDL_Color c = {(0), (0), (0), (0)});
+	// void Delete_Object();
 
 	virtual void Blit();
 
-	const SDL_Texture* GetAtlas() const;
+     const SDL_Texture* GetAtlas() const;
 
 private:
 
-	SDL_Texture* atlas = nullptr;
+	SDL_Texture* atlas;
 	p2SString atlas_file_name;
 	p2List<j1Gui_Object*> objects; 
+	
 
 };
 

@@ -35,7 +35,9 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
-	Create_Object(TYPE::Image, iPoint(200, 100)); 
+	SDL_Rect r = { 485, 830, 328, 101 };                 // spaceship in atlas
+	Create_Object(TYPE::Image, iPoint(500, 100), r); 
+	Create_Object(TYPE::Label, iPoint(500, 50), r, "Hello World", {(255), (0), (0), (155)});
 
 	return true;
 }
@@ -46,8 +48,10 @@ bool j1Gui::PreUpdate()
 	return true;
 }
 
-bool j1Gui::Update() {
+bool j1Gui::Update(float dt) {
 	Blit(); 
+	LOG("GUI update ... ... ..."); 
+	return true; 
 }
 
 // Called after all Updates
@@ -56,15 +60,17 @@ bool j1Gui::PostUpdate()
 	return true;
 }
 
-void j1Gui::Create_Object(TYPE type, iPoint pos) {
+void j1Gui::Create_Object(TYPE type, iPoint pos, SDL_Rect& atlas_rect, char* text, SDL_Color c) {
+
+	
 
 j1Gui_Object* ret = nullptr; 
 
 	switch (type) {
 	case TYPE::Label: 
-		ret = new j1Gui_Label(pos); 
+		ret = new j1Gui_Label(pos, atlas_rect, text, c);
 	case TYPE::Image:
-		ret = new j1Gui_Image(pos);
+		ret = new j1Gui_Image(pos, atlas_rect);
 	}
 
 	if (ret != nullptr) {
@@ -73,26 +79,25 @@ j1Gui_Object* ret = nullptr;
 
 };
 
-
+/*
 void j1Gui::Delete_Object() {
 
 
 
 
-};
+};*/
 
 void j1Gui::Blit(){
 
 	p2List_item<j1Gui_Object*>* item;
 	item = objects.start;
-	SDL_Rect Rect;
+
 
 	for (item = objects.start; item != NULL; item = item->next)
 	{
-
-		// Rect = item->data->animation->GetCurrentFrame();
-			App->render->Blit(item->data->atlas, item->data->pos.x, item->data->pos.y, &Rect, 1);
-
+		   
+			App->render->Blit(atlas, item->data->pos.x, item->data->pos.y, &item->data->rect, 1);
+			LOG("Printing GUI object !!!"); 
 	}
 
 };
