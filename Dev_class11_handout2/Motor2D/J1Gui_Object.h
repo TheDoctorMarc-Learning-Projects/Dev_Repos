@@ -11,10 +11,9 @@ class j1Gui_Object : public j1Gui
 {
 public:
 
-	j1Gui_Object(iPoint pos, SDL_Rect atlas_rect) {
+	j1Gui_Object(iPoint pos) {
 		this->pos = pos; 
-		this->rect = atlas_rect; 
-	    
+	
 	};
 
 	// Destructor

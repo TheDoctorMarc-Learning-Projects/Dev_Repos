@@ -12,26 +12,19 @@ class j1Gui_Label : public j1Gui_Object
 {
 public:
 
-	j1Gui_Label(iPoint pos, SDL_Rect atlas_rect, char* text, SDL_Color c) : j1Gui_Object(pos, atlas_rect) {
-		this->text = text; 
-		color = c; 
-		
-	};
+	j1Gui_Label(iPoint pos, _TTF_Font* f, char* text); 
 
 	// Destructor
 	virtual ~j1Gui_Label() {};
 
-	// Called when before render is available
-	bool Awake(pugi::xml_node&);
-
-	/*void Blit() {
-	};*/
+	void Init_Text(); 
+	void Blit(); 
 
 
 private:
 	_TTF_Font* font; 
 	char* text = nullptr; 
-	SDL_Color color; 
+	
 };
 
 

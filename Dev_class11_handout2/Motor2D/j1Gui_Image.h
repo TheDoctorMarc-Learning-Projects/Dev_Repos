@@ -11,7 +11,7 @@ class j1Gui_Image : public j1Gui_Object
 {
 public:
 
-	j1Gui_Image(iPoint pos, SDL_Rect atlas_rect) : j1Gui_Object(pos, atlas_rect){
+	j1Gui_Image(iPoint pos, SDL_Rect atlas_rect) : j1Gui_Object(pos){
 		
 	};
 

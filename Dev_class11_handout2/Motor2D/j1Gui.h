@@ -14,6 +14,7 @@ class j1Gui_Object;
 struct SDL_Texture; 
 struct SDL_Rect; 
 struct SDL_Color;
+struct _TTF_Font; 
 
 enum TYPE {
 	Label,
@@ -53,7 +54,11 @@ public:
 	// TODO 2: Create the factory methods
 	// Gui creation functions
 
-	void Create_Object(TYPE, iPoint, SDL_Rect&, char* text = nullptr, SDL_Color c = {(0), (0), (0), (0)});
+	void Create_Object(TYPE, iPoint, SDL_Rect&, char* text = nullptr);  //, SDL_Color c = {(0), (0), (0), (0)});
+
+
+	void Create_Label(iPoint, _TTF_Font*, char*);
+
 	// void Delete_Object();
 
 	virtual void Blit();

@@ -35,9 +35,11 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
-	SDL_Rect r = { 485, 830, 328, 101 };                 // spaceship in atlas
-	Create_Object(TYPE::Image, iPoint(500, 100), r); 
-	Create_Object(TYPE::Label, iPoint(500, 50), r, "Hello World", {(255), (0), (0), (155)});
+	/*SDL_Rect r = { 485, 830, 328, 101 };                 // spaceship in atlas
+	Create_Object(TYPE::Image, iPoint(500, 100), r); */
+
+	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 12);
+	Create_Label(iPoint(500, 50), font, "Hello World");
 
 	return true;
 }
@@ -60,7 +62,7 @@ bool j1Gui::PostUpdate()
 	return true;
 }
 
-void j1Gui::Create_Object(TYPE type, iPoint pos, SDL_Rect& atlas_rect, char* text, SDL_Color c) {
+void j1Gui::Create_Object(TYPE type, iPoint pos, SDL_Rect& atlas_rect, char* text) {//, SDL_Color c) {
 
 	
 
@@ -68,7 +70,7 @@ j1Gui_Object* ret = nullptr;
 
 	switch (type) {
 	case TYPE::Label: 
-		ret = new j1Gui_Label(pos, atlas_rect, text, c);
+		//ret = new j1Gui_Label(pos, atlas_rect, text, c);
 	case TYPE::Image:
 		ret = new j1Gui_Image(pos, atlas_rect);
 	}
@@ -78,6 +80,13 @@ j1Gui_Object* ret = nullptr;
 	}
 
 };
+
+
+void j1Gui::Create_Label(iPoint pos, _TTF_Font* font, char* text) {
+	j1Gui_Label* ret = new j1Gui_Label(pos, font, text);
+
+	objects.add(ret); 
+}
 
 /*
 void j1Gui::Delete_Object() {
@@ -96,8 +105,9 @@ void j1Gui::Blit(){
 	for (item = objects.start; item != NULL; item = item->next)
 	{
 		   
-			App->render->Blit(atlas, item->data->pos.x, item->data->pos.y, &item->data->rect, 1);
-			LOG("Printing GUI object !!!"); 
+		/*	App->render->Blit(atlas, item->data->pos.x, item->data->pos.y, &item->data->rect, 1);
+			LOG("Printing GUI object !!!"); */
+		item->data->Blit(); 
 	}
 
 };
