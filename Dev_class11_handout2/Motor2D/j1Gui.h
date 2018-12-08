@@ -54,7 +54,7 @@ public:
 	// TODO 2: Create the factory methods
 	// Gui creation functions
 
-	void Create_Object(TYPE, iPoint, SDL_Rect&, char* text = nullptr);  //, SDL_Color c = {(0), (0), (0), (0)});
+	void Create_Image(SDL_Texture*, iPoint, SDL_Rect&);  
 
 
 	void Create_Label(iPoint, _TTF_Font*, char*);

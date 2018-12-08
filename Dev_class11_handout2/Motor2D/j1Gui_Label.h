@@ -19,7 +19,7 @@ public:
 
 	void Init_Text(); 
 	void Blit(); 
-
+	
 
 private:
 	_TTF_Font* font; 
